@@ -2,7 +2,7 @@ export const Globalstyles = {
   body: {
     margin: '0',
     fontFamily:
-      'BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,      Helvetica Neue, sansSerif',
+      'BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sansSerif',
     webkitFontSmoothing: 'antialiased',
     mozOsxFontSmoothing: 'grayscale',
   },

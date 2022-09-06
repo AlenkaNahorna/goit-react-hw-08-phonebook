@@ -3,11 +3,11 @@ import { lazy, Suspense } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
-// import { Box } from 'styles/Box';
-// import { ContactForm } from 'components/ContactForm/ContactForm';
-// import { ContactList } from 'components/ContactList/ContactList';
-// import { Filter } from 'components/Filter/Filter';
-// import { MainTitle, SubTitle } from 'components/ui/titles';
+import { Box } from 'styles/Box';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import { ContactList } from 'components/ContactList/ContactList';
+import { Filter } from 'components/Filter/Filter';
+import { MainTitle, SubTitle } from 'components/ui/titles';
 import { SharedLayout } from 'layout/SharedLayout';
 import { Loader } from 'components/ui/Loader/Loader';
 
@@ -43,7 +43,7 @@ export const App = () => {
         draggable
         pauseOnHover
       />
-      {/* <Box
+      <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
@@ -59,7 +59,6 @@ export const App = () => {
         <Filter />
         <ContactList />
       </Box>
-       */}
     </>
   );
 };
