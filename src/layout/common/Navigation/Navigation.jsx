@@ -15,7 +15,7 @@ export const Navigation = () => {
           <NavigationLink to="/login">LogIn</NavigationLink>
         </NavigationListItem>
         <NavigationListItem>
-          <NavigationLink to="/register">SignUp</NavigationLink>
+          <NavigationLink to="/SignUp">SignUp</NavigationLink>
         </NavigationListItem>
         <NavigationListItem>
           <NavigationLink to="/UserMenu">UserMenu</NavigationLink>

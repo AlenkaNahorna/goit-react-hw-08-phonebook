@@ -1,35 +1,38 @@
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  // useSelector,
+  useDispatch,
+} from 'react-redux';
 import { useEffect } from 'react';
 import {
-  deleteItem,
-  getContact,
-  getFilterWord,
+  // deleteItem,
+  // getContact,
+  // getFilterWord,
   fetchContacts,
 } from 'redux/contactsSlice';
 import {
   ContactsList,
-  ContactsListItem,
-  ContactsListText,
+  // ContactsListItem,
+  // ContactsListText,
 } from './ContactList.styled';
-import {
-  SecondaryButton,
-  SecondaryButtonIcon,
-} from 'components/ui/buttons/SecondaryButton';
+// import {
+//   SecondaryButton,
+//   SecondaryButtonIcon,
+// } from 'components/ui/buttons/SecondaryButton';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
 
-  const items = useSelector(getContact);
-  const filter = useSelector(getFilterWord);
+  // const items = useSelector(getContact);
+  // const filter = useSelector(getFilterWord);
 
-  const normalizedValue = filter.toLowerCase();
-  const filteredContacts = items.filter(option =>
-    option.name.toLowerCase().includes(normalizedValue)
-  );
+  // const normalizedValue = filter.toLowerCase();
+  // const filteredContacts = items.filter(option =>
+  //   option.name.toLowerCase().includes(normalizedValue)
+  // );
 
-  const deleteContact = contactId => {
-    dispatch(deleteItem(contactId));
-  };
+  // const deleteContact = contactId => {
+  //   dispatch(deleteItem(contactId));
+  // };
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -37,7 +40,7 @@ export const ContactList = () => {
 
   return (
     <ContactsList>
-      {filteredContacts.map(({ id, name, number }) => (
+      {/* {filteredContacts.map(({ id, name, number }) => (
         <ContactsListItem key={id}>
           {name}: <ContactsListText>{number}</ContactsListText>
           <SecondaryButton
@@ -50,7 +53,7 @@ export const ContactList = () => {
             Delate
           </SecondaryButton>
         </ContactsListItem>
-      ))}
+      ))} */}
     </ContactsList>
   );
 };

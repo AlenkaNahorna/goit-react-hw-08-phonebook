@@ -14,7 +14,7 @@ import { Loader } from 'components/ui/Loader/Loader';
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts/Contacts'));
 const LogIn = lazy(() => import('pages/LogIn/LogIn'));
-const SignUp = lazy(() => import('pages/register/SignUp'));
+const SignUp = lazy(() => import('pages/SignUp/SignUp'));
 const UserMenu = lazy(() => import('components/UserMenu/UserMenu'));
 
 export const App = () => {
@@ -25,7 +25,7 @@ export const App = () => {
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
             <Route path="contacts" element={<Contacts />} />
-            <Route path="register" element={<SignUp />} />
+            <Route path="signUp" element={<SignUp />} />
             <Route path="login" element={<LogIn />} />
             <Route path="userMenu" element={<UserMenu />} />
             <Route path="*" element={<Navigate to="/" />} />
