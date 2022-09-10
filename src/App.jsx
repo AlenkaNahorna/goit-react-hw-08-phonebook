@@ -33,7 +33,7 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index path="/" element={<PublicRoute component={<Home />} />} />
+        <Route index element={<PublicRoute component={<Home />} />} />
         <Route
           path="signUp"
           element={
@@ -56,9 +56,7 @@ export const App = () => {
         />
         <Route
           path="contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Contacts />} />
-          }
+          element={<PrivateRoute redirectTo="login" component={<Contacts />} />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>

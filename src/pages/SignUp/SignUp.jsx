@@ -1,8 +1,6 @@
 import * as yup from 'yup';
 import { Formik, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-
 import { Label } from 'components/ui/Label/Label';
 import { PrimaryButton } from 'components/ui/buttons/PrimaryButton';
 import {
@@ -28,29 +26,9 @@ const FormError = ({ name }) => {
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(operations.register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(operations.register(values));
+    resetForm();
   };
 
   return (
@@ -60,33 +38,16 @@ const SignUp = () => {
       onSubmit={handleSubmit}
     >
       <FormEl>
-        <Label>
-          Name:
-          <Input type="text" name="name" value={name} onChange={handleChange} />
-          <FormError name="name" />
-        </Label>
+        <Label htmlFor="name">Name: </Label>
+        <Input type="text" name="name" />
+        <FormError name="name" />
+        <Label htmlFor="email">Email: </Label>
+        <Input type="email" name="email" />
+        <FormError name="email" />
 
-        <Label>
-          Email:
-          <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-          <FormError name="email" />
-        </Label>
-
-        <Label>
-          Password:
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-          <FormError name="password" />
-        </Label>
+        <Label htmlFor="password">Password: </Label>
+        <Input type="password" name="password" />
+        <FormError name="password" />
 
         <PrimaryButton type="submit">SignUp</PrimaryButton>
       </FormEl>

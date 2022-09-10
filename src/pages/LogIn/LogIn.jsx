@@ -1,7 +1,8 @@
 import * as yup from 'yup';
 import { Formik, ErrorMessage } from 'formik';
 // import { toast } from 'react-toastify';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import operations from 'redux/auth/authOperations';
 
 import { Label } from 'components/ui/Label/Label';
 import { PrimaryButton } from 'components/ui/buttons/PrimaryButton';
@@ -25,23 +26,27 @@ const FormError = ({ name }) => {
 };
 
 const LogIn = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(operations.logIn(values));
+    resetForm();
+  };
+
   return (
     <Formik
       initialValues={{ number: '', password: '' }}
       validationSchema={schema}
-      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <FormEl>
-        <Label>
-          Email:
-          <Input type="email" name="email" />
-          <FormError name="email" />
-        </Label>
-        <Label>
-          Password:
-          <Input type="password" name="password" />
-          <FormError name="password" />
-        </Label>
+        <Label htmlFor="email">Email: </Label>
+        <Input type="email" name="email" />
+        <FormError name="email" />
+
+        <Label htmlFor="password">Password: </Label>
+        <Input type="password" name="password" />
+        <FormError name="password" />
 
         <PrimaryButton type="submit">LogIn</PrimaryButton>
       </FormEl>
