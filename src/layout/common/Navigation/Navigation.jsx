@@ -1,3 +1,4 @@
+import { useAuth } from 'hooks/useAuth';
 import {
   NavigationList,
   NavigationListItem,
@@ -5,24 +6,20 @@ import {
 } from './Navigation.styled';
 
 export const Navigation = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <nav>
       <NavigationList>
         <NavigationListItem>
-          <NavigationLink to="/Home">Home</NavigationLink>
+          <NavigationLink to="/">Home</NavigationLink>
         </NavigationListItem>
-        <NavigationListItem>
-          <NavigationLink to="/login">LogIn</NavigationLink>
-        </NavigationListItem>
-        <NavigationListItem>
-          <NavigationLink to="/SignUp">SignUp</NavigationLink>
-        </NavigationListItem>
-        <NavigationListItem>
-          <NavigationLink to="/UserMenu">UserMenu</NavigationLink>
-        </NavigationListItem>
-        <NavigationListItem>
-          <NavigationLink to="/contacts">Contacts</NavigationLink>
-        </NavigationListItem>
+
+        {isLoggedIn && (
+          <NavigationListItem>
+            <NavigationLink to="/contacts">Contacts</NavigationLink>
+          </NavigationListItem>
+        )}
       </NavigationList>
     </nav>
   );

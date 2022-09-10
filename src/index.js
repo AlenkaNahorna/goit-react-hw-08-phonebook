@@ -13,15 +13,15 @@ import { App } from 'App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/goit-react-hw-08-phonebook/">
-      <ThemeProvider theme={theme}>
-        <Global styles={Globalstyles} />
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+    <ThemeProvider theme={theme}>
+      <Global styles={Globalstyles} />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter basename="/goit-react-hw-08-phonebook/">
             <App />
-          </PersistGate>
-        </Provider>
-      </ThemeProvider>
-    </BrowserRouter>
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );
