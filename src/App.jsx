@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import operations from 'redux/auth/authOperations';
 import { Layout } from 'layout/Layout';
 import { useAuth } from 'hooks/useAuth';
+import PublicRoute from 'components/PublicRoute';
+import PrivateRoute from 'components/PrivateRoute';
 
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts/Contacts'));
@@ -31,10 +33,33 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index path="/" element={<Home />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="login" element={<LogIn />} />
-        <Route path="contacts" element={<Contacts />} />
+        <Route index path="/" element={<PublicRoute component={<Home />} />} />
+        <Route
+          path="signUp"
+          element={
+            <PublicRoute
+              restricted
+              redirectTo="contacts"
+              component={<SignUp />}
+            />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute
+              restricted
+              redirectTo="contacts"
+              component={<LogIn />}
+            />
+          }
+        />
+        <Route
+          path="contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
