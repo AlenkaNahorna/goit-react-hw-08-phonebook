@@ -6,11 +6,7 @@ import operations from 'redux/auth/authOperations';
 
 import { Label } from 'components/ui/Label/Label';
 import { PrimaryButton } from 'components/ui/buttons/PrimaryButton';
-import {
-  FormEl,
-  ErrorText,
-  Input,
-} from 'components/ContactForm/ContactForm.styled';
+import { ErrorText, FormEl, Input } from 'components/ui/formik';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -35,18 +31,22 @@ const LogIn = () => {
 
   return (
     <Formik
-      initialValues={{ number: '', password: '' }}
+      initialValues={{ email: '', password: '' }}
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
       <FormEl>
-        <Label htmlFor="email">Email: </Label>
-        <Input type="email" name="email" />
-        <FormError name="email" />
+        <Label htmlFor="email">
+          Email:
+          <Input type="email" name="email" />
+          <FormError name="email" />
+        </Label>
 
-        <Label htmlFor="password">Password: </Label>
-        <Input type="password" name="password" />
-        <FormError name="password" />
+        <Label htmlFor="password">
+          Password:
+          <Input type="password" name="password" />
+          <FormError name="password" />
+        </Label>
 
         <PrimaryButton type="submit">LogIn</PrimaryButton>
       </FormEl>

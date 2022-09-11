@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { addItem, getContact } from 'redux/contactsSlice';
-import { ErrorText, FormEl, Input } from './ContactForm.styled';
 import { Label } from 'components/ui/Label/Label';
 import {
   PrimaryButton,
   PrimaryButtonIcon,
 } from 'components/ui/buttons/PrimaryButton';
+import { ErrorText, FormEl, Input } from 'components/ui/formik';
 
 const schema = yup.object().shape({
   name: yup.string().required(),

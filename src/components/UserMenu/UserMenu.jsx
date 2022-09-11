@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { PrimaryButton } from 'components/ui/buttons/PrimaryButton';
 import { Box } from 'styles/Box';
 import { useAuth } from 'hooks/useAuth';
 import defaultAvatar from 'components/UserMenu/defaultAvatar.png';
 import operations from 'redux/auth/authOperations';
+import { SecondaryButton } from 'components/ui/buttons/SecondaryButton';
+import { UserMenuText } from './UserMenu.styyled';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -13,13 +14,13 @@ const UserMenu = () => {
   return (
     <Box display="flex" alignItems="center">
       <img src={avatar} alt="avatar" width="32" />
-      <span>Welcome, {user.name}</span>
-      <PrimaryButton
+      <UserMenuText>Welcome, {user.name}</UserMenuText>
+      <SecondaryButton
         type="button"
         onClick={() => dispatch(operations.logOut())}
       >
         Logout
-      </PrimaryButton>
+      </SecondaryButton>
     </Box>
   );
 };

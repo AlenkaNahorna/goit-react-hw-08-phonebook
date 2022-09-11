@@ -6,6 +6,7 @@ export const SecondaryButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: ${p => p.theme.space.m};
+  margin-left: ${p => p.theme.space.ml};
   font-size: ${p => p.theme.fontSizes.s};
   border: none;
   border-radius: ${p => p.theme.radii.small};

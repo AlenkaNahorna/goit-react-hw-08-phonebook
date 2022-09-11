@@ -1,20 +1,20 @@
 import * as yup from 'yup';
 import { Formik, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+
+import { ErrorText, FormEl, Input } from 'components/ui/formik';
 import { Label } from 'components/ui/Label/Label';
 import { PrimaryButton } from 'components/ui/buttons/PrimaryButton';
-import {
-  FormEl,
-  ErrorText,
-  Input,
-} from 'components/ContactForm/ContactForm.styled';
+import { SubTitle } from 'components/ui/titles';
 import operations from 'redux/auth/authOperations';
+import { Box } from 'styles/Box';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
   password: yup.string().min(5).required(),
 });
+
 const FormError = ({ name }) => {
   return (
     <ErrorMessage
@@ -26,32 +26,59 @@ const FormError = ({ name }) => {
 
 const SignUp = () => {
   const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(operations.register(values));
+    const user = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    };
+    dispatch(operations.register(user));
     resetForm();
   };
 
   return (
-    <Formik
-      initialValues={{ name: '', number: '', password: '' }}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      // p="ml"
+      // m="0px auto"
+      // backgroundColor="secondaryColorBlue"
+      // width="100%"
+      // minHeight="100vh"
     >
-      <FormEl>
-        <Label htmlFor="name">Name: </Label>
-        <Input type="text" name="name" />
-        <FormError name="name" />
-        <Label htmlFor="email">Email: </Label>
-        <Input type="email" name="email" />
-        <FormError name="email" />
+      <SubTitle title="For creating youre own contacts please register" />
 
-        <Label htmlFor="password">Password: </Label>
-        <Input type="password" name="password" />
-        <FormError name="password" />
+      <Formik
+        initialValues={{ name: '', email: '', password: '' }}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+        autoComplete="off"
+      >
+        <FormEl>
+          <Label>
+            Name:
+            <Input type="text" name="name" />
+            <FormError name="name" />
+          </Label>
 
-        <PrimaryButton type="submit">SignUp</PrimaryButton>
-      </FormEl>
-    </Formik>
+          <Label>
+            Email:
+            <Input type="email" name="email" />
+            <FormError name="email" />
+          </Label>
+
+          <Label>
+            Password:
+            <Input type="password" name="password" />
+            <FormError name="password" />
+          </Label>
+
+          <PrimaryButton type="submit">SignUp</PrimaryButton>
+        </FormEl>
+      </Formik>
+    </Box>
   );
 };
 

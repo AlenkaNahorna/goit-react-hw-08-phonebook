@@ -1,14 +1,5 @@
 import styled from '@emotion/styled';
-import { Form, Field } from 'formik';
-
-export const FormEl = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  margin-bottom: 30px;
-  padding-top: 10px;
-`;
+import { Field } from 'formik';
 
 export const Input = styled(Field)`
   padding: ${p => p.theme.space.m};
@@ -26,9 +17,4 @@ export const Input = styled(Field)`
     outline: none;
     border: 2px solid ${p => p.theme.colors.accentColor};
   }
-`;
-
-export const ErrorText = styled.p`
-  color: red;
-  font-size: ${p => p.theme.fontSizes.m};
 `;

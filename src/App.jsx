@@ -33,7 +33,7 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<PublicRoute component={<Home />} />} />
+        <Route index path="/" element={<PublicRoute component={<Home />} />} />
         <Route
           path="signUp"
           element={
