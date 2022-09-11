@@ -1,20 +1,30 @@
-// import axios from 'axios';
-// import { BASE_URL } from 'constants/api';
+import axios from 'axios';
 
-// const customAxios = axios.create({
-//   baseURL: BASE_URL,
-// });
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// export const getContacts = async () => {
-//   const { data } = await customAxios.get('');
-//   return data;
-// };
+export const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
-// export const addContact = async contact => {
-//   const { data } = await customAxios.post('', contact);
-//   return data;
-// };
-// export const deleteContact = async id => {
-//   const { data } = await customAxios.delete(`/${id}`);
-//   return data;
-// };
+export const fetchAllContacts = async () => {
+  return await axios.get('/contacts').then(response => response.data);
+};
+
+export const fetchAddContact = async contact => {
+  return await axios.post('/contacts', contact).then(response => response.data);
+};
+
+export const fetchDeleteContact = async id => {
+  return await axios.delete(`/contacts/${id}`).then(() => id);
+};
+
+export const fetchEditContact = async ({ id, name, number }) => {
+  return await axios
+    .patch(`/contacts/${id}`, { name, number })
+    .then(response => response.data);
+};
