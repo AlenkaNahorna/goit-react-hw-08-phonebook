@@ -14,22 +14,17 @@ export const Layout = () => {
       alignItems="center"
       width="100%"
       minHeight="100vh"
-      backgroundColor="secondaryBgColor"
+      backgroundColor="backgroundColor"
     >
       <AppBar />
 
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        padding="xl"
-      >
+      <Box display="flex" flexDirection="column" alignItems="center" pt="xl">
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
         <ToastContainer
           position="top-center"
-          autoClose={3000}
+          autoClose={2000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

@@ -3,12 +3,6 @@ import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 
-// import { Box } from 'styles/Box';
-// import { ContactForm } from 'components/ContactForm/ContactForm';
-// import { ContactList } from 'components/ContactList/ContactList';
-// import { Filter } from 'components/Filter/Filter';
-// import { MainTitle, SubTitle } from 'components/ui/titles';
-
 import operations from 'redux/auth/authOperations';
 import { Layout } from 'layout/Layout';
 import { useAuth } from 'hooks/useAuth';
@@ -62,22 +56,4 @@ export const App = () => {
       </Route>
     </Routes>
   );
-  // <>
-  //         <Box
-  //     display="flex"
-  //     flexDirection="column"
-  //     alignItems="center"
-  //     p="ml"
-  //     m="0px auto"
-  //     backgroundColor="secondaryColorBlue"
-  //     width="100%"
-  //     minHeight="100vh"
-  //   >
-  //     <MainTitle title="Phonebook" />
-  //     <ContactForm />
-  //     <SubTitle title="Contacts" />
-  //     <Filter />
-  //     <ContactList />
-  //   </Box>
-  // </>
 };

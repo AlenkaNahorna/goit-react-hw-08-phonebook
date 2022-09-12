@@ -14,7 +14,8 @@ const UserMenu = () => {
   return (
     <Box display="flex" alignItems="center">
       <img src={avatar} alt="avatar" width="32" />
-      <UserMenuText>Welcome, {user.name}</UserMenuText>
+      <UserMenuText> Welcome, {user.name}</UserMenuText>
+
       <SecondaryButton
         type="button"
         onClick={() => dispatch(operations.logOut())}

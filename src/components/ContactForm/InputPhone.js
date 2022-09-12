@@ -11,6 +11,7 @@ export const InputPhone = ({ ...props }) => {
       <PhoneInput
         {...props}
         {...field}
+        country="ua"
         value={field.value}
         id="number"
         defaultCountry="ua"
@@ -21,11 +22,14 @@ export const InputPhone = ({ ...props }) => {
         }}
         containerStyle={{
           color: 'black',
-          marginBottom: '15px',
+          marginBottom: '10px',
         }}
         inputStyle={{
-          outline: '2px solid #D75C78',
+          width: '408px',
+          height: '38px',
           borderRadius: '5px',
+          border: 'none',
+          boxShadow: '5px 5px 10px 0px rgba(149, 167, 173, 1)',
         }}
       />
       {meta.error && meta.touched && <ErrorText>{meta.error}</ErrorText>}

@@ -6,11 +6,10 @@ export const PrimaryButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: ${p => p.theme.space.ml};
-  margin-top: ${p => p.theme.space.l};
   font-size: ${p => p.theme.fontSizes.m};
   border: none;
   border-radius: ${p => p.theme.radii.small};
-  background-color: #d6e0ecd0;
+  background-color: #d1dcf1bd;
   box-shadow: 5px 5px 10px 0px rgba(149, 167, 173, 1);
 
   &:hover {

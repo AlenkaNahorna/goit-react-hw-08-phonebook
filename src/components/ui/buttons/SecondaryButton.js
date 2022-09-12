@@ -10,7 +10,7 @@ export const SecondaryButton = styled.button`
   font-size: ${p => p.theme.fontSizes.s};
   border: none;
   border-radius: ${p => p.theme.radii.small};
-  background-color: #e8eaeed0;
+  background-color: #d1dcf1bd;
   box-shadow: 5px 5px 10px 0px rgba(149, 167, 173, 1);
 
   &:hover {
