@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -11,6 +10,7 @@ import {
   PrimaryButtonIcon,
 } from 'components/ui/buttons/PrimaryButton';
 import { ErrorText, FormEl, Input } from 'components/ui/formik';
+import { InputPhone } from './InputPhone';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -37,7 +37,6 @@ export const ContactForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const newContact = {
-      id: nanoid(6),
       name: values.name,
       number: values.number,
     };
@@ -46,7 +45,7 @@ export const ContactForm = () => {
         item.name.toLowerCase().includes(newContact.name.toLowerCase())
       )
     ) {
-      toast.info(`${newContact.name} is already in contact`);
+      toast.info(`${newContact.name} is already in contacts`);
       return;
     } else {
       dispatch(addItem(newContact));
@@ -68,7 +67,7 @@ export const ContactForm = () => {
         </Label>
         <Label>
           Number:
-          <Input type="tel" name="number" />
+          <InputPhone type="tel" name="number" />
           <FormError name="number" />
         </Label>
 

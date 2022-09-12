@@ -77,20 +77,32 @@ export const contactsSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchContacts.fulfilled](state, action) {
-      state.items = [...action.payload];
+    [fetchContacts.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        items: [...action.payload],
+      };
     },
 
-    [addItem.fulfilled](state, action) {
-      state.items = [...action.payload];
+    [addItem.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        items: [...action.payload],
+      };
     },
 
-    [deleteItem.fulfilled](state, action) {
-      state.items = [...action.payload];
+    [deleteItem.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        items: action.payload,
+      };
     },
 
-    [editItem.fulfilled](state, action) {
-      state.items = [...action.payload];
+    [editItem.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        items: action.payload,
+      };
     },
   },
 });

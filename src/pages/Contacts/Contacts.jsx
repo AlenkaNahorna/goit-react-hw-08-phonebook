@@ -6,12 +6,16 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 
 const Contacts = () => {
   return (
-    <Box display="flex" align-items="center" flex-direction="column">
+    <Box
+    // display="flex" align-items="center" flexDirection="column"
+    >
       <ContactForm />
-      <div>
+      <Box
+      // display="flex" align-items="center" flexDirection="column"
+      >
         <Filter />
         <ContactList />
-      </div>
+      </Box>
     </Box>
   );
 };
