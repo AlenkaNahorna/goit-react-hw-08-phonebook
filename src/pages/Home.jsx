@@ -7,7 +7,7 @@ const Home = () => {
       <MainTitle title="Welcome to your Phonebook" />
       <SubTitle title="This application created for saving youre contacts" />
       <SubTitle
-        title="You always can add new contacts, edit or delete already existing
+        title="You always can add new contacts or delete already existing
         contacts"
       />
     </Box>

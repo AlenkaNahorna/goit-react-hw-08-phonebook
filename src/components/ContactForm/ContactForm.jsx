@@ -13,7 +13,7 @@ import { ErrorText, FormEl, Input } from 'components/ui/formik';
 import { InputPhone } from './InputPhone';
 
 const schema = yup.object().shape({
-  name: yup.string().required(),
+  name: yup.string().max(20).required(),
   number: yup
     .number()
     .required()

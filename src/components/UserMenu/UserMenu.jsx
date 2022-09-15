@@ -2,9 +2,9 @@ import { useDispatch } from 'react-redux';
 import { Box } from 'styles/Box';
 import { useAuth } from 'hooks/useAuth';
 import defaultAvatar from 'components/UserMenu/defaultAvatar.png';
-import operations from 'redux/auth/authOperations';
 import { SecondaryButton } from 'components/ui/buttons/SecondaryButton';
 import { UserMenuText } from './UserMenu.styyled';
+import { operations } from 'redux/authSlice';
 
 const UserMenu = () => {
   const dispatch = useDispatch();

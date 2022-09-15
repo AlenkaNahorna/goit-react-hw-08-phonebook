@@ -1,5 +1,5 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -65,10 +65,59 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const operations = {
+export const operations = {
   register,
   logOut,
   logIn,
   fetchCurrentUser,
 };
-export default operations;
+
+const initialState = {
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+  isRefreshingUser: false,
+};
+
+export const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  extraReducers: {
+    [operations.register.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [operations.logIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [operations.logOut.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    [operations.fetchCurrentUser.pending](state) {
+      state.isRefreshingUser = true;
+    },
+    [operations.fetchCurrentUser.fulfilled](state, action) {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+      state.isRefreshingUser = false;
+    },
+    [operations.fetchCurrentUser.rejected](state) {
+      state.isRefreshingUser = false;
+    },
+  },
+});
+
+const getIsLoggedIn = state => state.auth.isLoggedIn;
+const getUser = state => state.auth.user;
+const getIsRefreshingUser = state => state.auth.isRefreshingUser;
+
+export const authSelectors = {
+  getIsLoggedIn,
+  getUser,
+  getIsRefreshingUser,
+};

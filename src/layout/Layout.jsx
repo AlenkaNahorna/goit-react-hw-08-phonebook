@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
 import { Box } from 'styles/Box';
 import { AppBar } from './common/AppBar/AppBar';
-import { Loader } from 'components/ui/Loader/Loader';
+// import { Loader } from 'components/ui/Loader/Loader';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <Box
       display="flex"
@@ -19,12 +19,12 @@ export const Layout = () => {
       <AppBar />
 
       <Box display="flex" flexDirection="column" alignItems="center" pt="xl">
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
+        {/* <Suspense fallback={<Loader />}> */}
+        <Outlet />
+        {/* </Suspense> */}
         <ToastContainer
           position="top-center"
-          autoClose={2000}
+          autoClose={1500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
@@ -37,3 +37,5 @@ export const Layout = () => {
     </Box>
   );
 };
+
+export default Layout;

@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { middleware } from './middleware';
-import authSlice from './auth/authSlice';
+import { authSlice } from './authSlice';
 import { contactsReducer } from './contactsSlice';
 
 const authReducer = authSlice.reducer;
