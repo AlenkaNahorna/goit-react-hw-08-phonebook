@@ -1,21 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { login, logout, signUp, userСurrent } from 'api/auth';
+import { token } from 'api/authApi';
 import { toast } from 'react-toastify';
-
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
 
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await signUp(credentials);
     token.set(data.token);
     toast.success('You are registered!');
     return data;
@@ -26,7 +16,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
-    const { data } = await axios.post('/users/login', credentials);
+    const { data } = await login(credentials);
     token.set(data.token);
     toast.success('You are login!');
     return data;
@@ -37,7 +27,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post('/users/logout');
+    await logout();
     token.unset();
     toast.success('You are logout!');
   } catch (error) {
@@ -57,7 +47,7 @@ const fetchCurrentUser = createAsyncThunk(
 
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('/users/current');
+      const { data } = await userСurrent();
       return data;
     } catch (error) {
       toast.error('Oops, something went wrong!');

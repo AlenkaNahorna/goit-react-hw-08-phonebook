@@ -25,12 +25,13 @@ export const addItem = createAsyncThunk(
   async (contact, { rejectWithValue }) => {
     try {
       await fetchAddContact(contact);
-      const data = await fetchAllContacts();
-      toast.success('Contact added!');
-      return data;
     } catch (error) {
       toast.error('Oops, something went wrong!');
       return rejectWithValue(error);
+    } finally {
+      const data = await fetchAllContacts();
+      toast.success('Contact added!');
+      return data;
     }
   }
 );
@@ -40,17 +41,18 @@ export const deleteItem = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await fetchDeleteContact(id);
-      const data = await fetchAllContacts();
-      toast.success('Contact deleted!');
-      return data;
     } catch (error) {
       toast.error('Contact not found!');
       return rejectWithValue(error);
+    } finally {
+      const data = await fetchAllContacts();
+      toast.success('Contact deleted!');
+      return data;
     }
   }
 );
 
-export const editContactAsync = createAsyncThunk(
+export const editContact = createAsyncThunk(
   'contacts/editContact',
   async contact => {
     try {
@@ -94,6 +96,13 @@ export const contactsSlice = createSlice({
       return {
         ...state,
         items: action.payload,
+      };
+    },
+
+    [editContact.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        items: [...action.payload],
       };
     },
   },
