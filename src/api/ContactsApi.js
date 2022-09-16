@@ -13,9 +13,3 @@ export const fetchAddContact = async contact => {
 export const fetchDeleteContact = async id => {
   return await authApi.delete(`/contacts/${id}`).then(() => id);
 };
-
-export const fetchEditContact = async ({ id, name, number }) => {
-  return await authApi
-    .patch(`/contacts/${id}`, { name, number })
-    .then(response => response.data);
-};

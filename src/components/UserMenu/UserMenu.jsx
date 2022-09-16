@@ -8,7 +8,7 @@ import { operations } from 'redux/authSlice';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const { user } = useAuth();
+  const user = useAuth();
   const avatar = defaultAvatar;
 
   return (

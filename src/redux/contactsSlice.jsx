@@ -4,8 +4,7 @@ import {
   fetchAddContact,
   fetchAllContacts,
   fetchDeleteContact,
-  fetchEditContact,
-} from 'api/fetchContacts';
+} from 'api/ContactsApi';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
@@ -52,20 +51,6 @@ export const deleteItem = createAsyncThunk(
   }
 );
 
-export const editContact = createAsyncThunk(
-  'contacts/editContact',
-  async contact => {
-    try {
-      await fetchEditContact(contact);
-      toast.success('Contact edited!');
-      const data = fetchAllContacts();
-      return data;
-    } catch (error) {
-      toast.error('Oops, something went wrong!');
-    }
-  }
-);
-
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
@@ -96,13 +81,6 @@ export const contactsSlice = createSlice({
       return {
         ...state,
         items: action.payload,
-      };
-    },
-
-    [editContact.fulfilled]: (state, action) => {
-      return {
-        ...state,
-        items: [...action.payload],
       };
     },
   },
