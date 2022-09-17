@@ -4,7 +4,7 @@ export const StyledMainTitle = styled.h1`
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.xl};
   margin-bottom: ${p => p.theme.space.l};
-  color: ${p => p.theme.colors.accentColor};
+  color: ${p => p.theme.colors.secondaryTexColor};
 `;
 
 export const MainTitle = ({ title }) => {

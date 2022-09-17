@@ -47,7 +47,7 @@ const fetchCurrentUser = createAsyncThunk(
     }
     token.set(persistedToken);
     try {
-      const { data } = await userСurrent();
+      const data = await userСurrent();
       return data;
     } catch (error) {
       toast.error('Oops, something went wrong!');

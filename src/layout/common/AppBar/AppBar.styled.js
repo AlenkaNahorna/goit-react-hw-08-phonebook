@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 
 export const Header = styled.header`
   width: 100%;
+  background-color: #529fbb;
+  /* ${p => p.theme.colors.backgroundColor}; */
   position: static;
   display: flex;
   justify-content: space-around;

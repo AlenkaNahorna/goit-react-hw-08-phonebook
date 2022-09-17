@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { Box } from 'styles/Box';
 import { AppBar } from './common/AppBar/AppBar';
+import { Container } from './Layout.styled';
 
 const Layout = () => {
   return (
@@ -16,7 +17,7 @@ const Layout = () => {
     >
       <AppBar />
 
-      <Box display="flex" flexDirection="column" alignItems="center" pt="xl">
+      <Container>
         <Outlet />
 
         <ToastContainer
@@ -30,7 +31,7 @@ const Layout = () => {
           draggable
           pauseOnHover
         />
-      </Box>
+      </Container>
     </Box>
   );
 };

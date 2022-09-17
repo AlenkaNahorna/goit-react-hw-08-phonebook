@@ -1,15 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { Box } from 'styles/Box';
 import { useAuth } from 'hooks/useAuth';
-import defaultAvatar from 'components/UserMenu/defaultAvatar.png';
+import defaultAvatar from 'assets/defaultAvatar.png';
 import { SecondaryButton } from 'components/ui/buttons/SecondaryButton';
 import { UserMenuText } from './UserMenu.styyled';
 import { operations } from 'redux/authSlice';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const user = useAuth();
+  const { user } = useAuth();
   const avatar = defaultAvatar;
+
+  console.log(user);
 
   return (
     <Box display="flex" alignItems="center">

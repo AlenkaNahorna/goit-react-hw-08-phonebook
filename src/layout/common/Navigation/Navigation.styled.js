@@ -7,18 +7,6 @@ export const NavStyled = styled.nav`
   justify-content: center;
 `;
 
-// export const NavigationList = styled.ul`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
-
-// export const NavigationListItem = styled.li`
-//   :not(:last-child) {
-//     margin-right: ${p => p.theme.space.xl};
-//   }
-// `;
-
 export const NavigationLink = styled(NavLink)`
   display: flex;
   align-items: center;
